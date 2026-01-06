@@ -1,4 +1,6 @@
 // Get elements
+const copyBtn = document.getElementById("copyBtn");
+const reasonSelect = document.getElementById("reason");
 const historyList = document.getElementById("historyList");
 const streakTitle = document.querySelector(".card h2");
 const longestText = document.querySelector(".card p");
@@ -20,12 +22,22 @@ let longestStreak = localStorage.getItem("longestStreak")
 function updateHistory() {
   historyList.innerHTML = "";
 
-  relapseHistory.forEach(date => {
+  relapseHistory.forEach(item => {
     const li = document.createElement("li");
-    li.innerText = date;
+
+    // Handle old data (string)
+    if (typeof item === "string") {
+      li.innerText = item;
+    } 
+    // Handle new data (object)
+    else {
+      li.innerText = `${item.date} — ${item.reason}`;
+    }
+
     historyList.appendChild(li);
   });
 }
+
 function updateUI() {
   streakTitle.innerText = `🔥 ${currentStreak} Days Clean`;
   longestText.innerText = `Longest streak: ${longestStreak} days`;
@@ -43,7 +55,14 @@ relapseBtn.addEventListener("click", () => {
 
   const today = new Date().toDateString();
 
-  relapseHistory.unshift(today);
+  const reason = reasonSelect.value || "Not specified";
+
+relapseHistory.unshift({
+  date: today,
+  reason: reason
+});
+
+reasonSelect.value = "";
   localStorage.setItem("relapseHistory", JSON.stringify(relapseHistory));
 
   if (currentStreak > longestStreak) {
@@ -56,7 +75,30 @@ relapseBtn.addEventListener("click", () => {
   localStorage.setItem("lastDate", today);
 
   updateUI();
-  updateHistory();
+  function updateHistory() {
+  historyList.innerHTML = "";
+
+  relapseHistory.forEach(item => {
+    const li = document.createElement("li");
+    li.innerText = `${item.date} — ${item.reason}`;
+    historyList.appendChild(li);
+  });
+}
+});
+copyBtn.addEventListener("click", () => {
+  if (relapseHistory.length === 0) {
+    alert("No relapse history to copy.");
+    return;
+  }
+
+  let text = "Henka — Relapse History\n\n";
+
+  relapseHistory.forEach(item => {
+    text += `${item.date} - ${item.reason}\n`;
+  });
+
+  navigator.clipboard.writeText(text);
+  alert("History copied to clipboard.");
 });
 
 // Run on page load
