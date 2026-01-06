@@ -11,12 +11,14 @@
     <h1>Henka</h1>
     <p class="tagline">Small resets. Real change.</p>
 
-    <div class="card">
-      <h2>🔥 0 Days Clean</h2>
-      <p>Longest streak: 0 days</p>
-    </div>
+   <div class="card">
+  <h2 id="streakText">🔥 0 Days Clean</h2>
+  <p id="longestText">Longest streak: 0 days</p>
+</div>
+    
 
-    <button class="relapse-btn">I Relapsed</button>
+    <button class="track-btn">Stayed on Track</button>
+<button class="relapse-btn">I Slipped</button>
     <select id="reason">
   <option value="">Select reason (optional)</option>
   <option value="Stress">Stress</option>
@@ -27,8 +29,8 @@
 </select>
 <button id="copyBtn">Copy History</button>
     <div class="history">
-  <h3>Relapse History</h3>
-  <ul id="historyList"></ul>
+  <h3>Slip History</h3>
+<ul id="historyList"></ul>
 </div>
 
     <p class="footer">

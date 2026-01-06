@@ -31,7 +31,28 @@ h1 {
   margin-bottom: 25px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
+.track-btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  background: #065f46;   /* calm green */
+  color: white;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  margin-bottom: 12px;
 
+  transition: transform 0.08s ease, background 0.2s ease;
+}
+
+.track-btn:hover {
+  background: #047857;
+}
+
+.track-btn:active {
+  transform: scale(0.96);
+}
 .relapse-btn {
   transition: transform 0.1s ease, background 0.2s ease;
 }
