@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+.app {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+.tagline {
+  color: #94a3b8;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: #020617;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.relapse-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  background: #7c2d12;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.relapse-btn:hover {
+  background: #9a3412;
+}
+
+.footer {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 30px;
+}
